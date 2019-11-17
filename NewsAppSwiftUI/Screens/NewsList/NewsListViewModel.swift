@@ -13,33 +13,28 @@ class NewsListViewModel : ObservableObject {
     
     private let requestsHandler = RequestsHandler()
     
-    var articles: [ArticleModel] = [] {
-        didSet {
-            didChange.send(self)
-        }
-    }
-    
-    var didChange = PassthroughSubject<NewsListViewModel, Never>()
+    @Published var articles: ResponseWrapper<[ArticleModel]>
     
     init() {
-        search(forQuery: "poland")
+        articles = ResponseWrapper<[ArticleModel]>(data: [], state: ResponseState.LOADING)
     }
-    
+
     func search(forQuery searchQuery: String) {
         
         DispatchQueue.global(qos: .background).async{ [weak self] in
             self?.requestsHandler.getArticles(query: searchQuery, successHandler: { response in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
-                    self.articles = response.articles
+                    self.articles = ResponseWrapper<[ArticleModel]>(data: response.articles, state: ResponseState.SUCCESS)
+                    print(response.status)
+                    
                 }
             }) { (error) in
                 DispatchQueue.main.async {
-                    print(error)
+                    self?.articles = ResponseWrapper<[ArticleModel]>(data: [], errorData: error, state: ResponseState.ERROR)
                 }
             }
         }
-        
         
     }
 }
