@@ -20,7 +20,8 @@ class RequestsHandler {
     static let genericError = "Something went wrong. Please try again later"
     
     func getArticles(query: String, successHandler: @escaping (GetArticlesResponse) -> Void, errorHandler: @escaping ErrorHandler) {
-        let urlString = "\(BASE_URL)\(EVERYTHING_ENDPOINT)?q=\(query)&apiKey=\(API_KEY)"
+        // TODO make this endpoint more configurable
+        let urlString = "\(BASE_URL)\(EVERYTHING_ENDPOINT)?q=\(query)&sortBy=publishedAt&apiKey=\(API_KEY)"
         guard let url = URL(string: urlString) else {
             assertionFailure("Failure while constructing url")
             return
