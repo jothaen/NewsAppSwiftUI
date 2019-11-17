@@ -8,14 +8,17 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct NewsListView: View {
+    
+    @EnvironmentObject var viewModel: NewsListViewModel
+    
     var body: some View {
         Text("Hello, World!")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct NewsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NewsListView()
     }
 }
