@@ -29,4 +29,18 @@ struct ArticleModel : Codable, Hashable {
         content = try values.decodeIfPresent(String.self, forKey: .content)
     }
     
+    init(author: String?, title: String, description: String?, url: String?, urlToImage: String?, publishedAt: String?, content: String?) {
+        self.author = author
+        self.title = title
+        self.description = description
+        self.url = url
+        self.urlToImage = urlToImage
+        self.publishedAt = publishedAt
+        self.content = content
+    }
+    
+    static func mock() -> ArticleModel {
+        return ArticleModel(author: "John Doe", title: "Title", description: "Description", url: "www.google.pl", urlToImage: "www.google.pl", publishedAt: "17-11-2019", content: "Content")
+    }
+    
 }

@@ -33,7 +33,7 @@ struct NewsListView: View {
     
     private func getArticlesList(data: [ArticleModel]) -> some View {
          return List(data, id: \.title) { item in
-            Text(item.title)
+            NewsListElement(article: item)
          }
     }
     
