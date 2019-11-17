@@ -10,12 +10,15 @@ import SwiftUI
 
 struct NewsListView: View {
     
-    @State private var query = "Poland"
+    @State private var query = "Cracow"
     @EnvironmentObject var viewModel: NewsListViewModel
     
     var body: some View {
          NavigationView {
-            getContent()
+            VStack {
+                SearchView(text: $query, hint: Constants.SEARCH_FOR_ARTICLES_TEXT, onCommit: search)
+                getContent().fullScreen()
+            }
             .navigationBarTitle(Constants.APP_NAME)
         }
          .onAppear(perform: search)
@@ -27,10 +30,15 @@ struct NewsListView: View {
                 return AnyView(Text(Constants.LOADING_TEXT))
             case .ERROR:
                 let errorMsg = viewModel.articles.errorData ?? Constants.GENERIC_ERROR_MESSAGE
-                return AnyView(Text(errorMsg))
+                return AnyView(ErrorView(errorMessage: errorMsg, onRetryClick: search))
             case .SUCCESS:
+                if (viewModel.articles.data.isEmpty) { return AnyView(getEmptyResultsView()) }
                 return AnyView(getArticlesList(data: viewModel.articles.data))
         }
+    }
+    
+    private func getEmptyResultsView() -> some View {
+        return Text(Constants.SEARCH_EMPTY_STATE)
     }
     
     private func getArticlesList(data: [ArticleModel]) -> some View {
@@ -41,6 +49,12 @@ struct NewsListView: View {
     
     private func search() {
         viewModel.search(forQuery: query)
+    }
+}
+
+extension View {
+    func fullScreen() -> some View {
+        return frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
     }
 }
 

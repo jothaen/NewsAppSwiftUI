@@ -27,7 +27,7 @@ struct NetworkImageView: View {
                 Image(uiImage: imageLoader.image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: width, height: height)
+                    .frame(width: width)
             } else {
                 EmptyView().frame(width: width, height: height)
             }

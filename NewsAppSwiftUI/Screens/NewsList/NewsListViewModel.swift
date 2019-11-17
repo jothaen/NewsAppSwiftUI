@@ -20,14 +20,12 @@ class NewsListViewModel : ObservableObject {
     }
 
     func search(forQuery searchQuery: String) {
-        
+        articles = ResponseWrapper<[ArticleModel]>(data: [], state: ResponseState.LOADING)
         DispatchQueue.global(qos: .background).async{ [weak self] in
-            self?.requestsHandler.getArticles(query: searchQuery, successHandler: { response in
+            self?.requestsHandler.getArticles(query: QueryNormalizer.normalize(query: searchQuery), successHandler: { response in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     self.articles = ResponseWrapper<[ArticleModel]>(data: response.articles, state: ResponseState.SUCCESS)
-                    print(response.status)
-                    
                 }
             }) { (error) in
                 DispatchQueue.main.async {
@@ -35,6 +33,6 @@ class NewsListViewModel : ObservableObject {
                 }
             }
         }
-        
     }
+    
 }
