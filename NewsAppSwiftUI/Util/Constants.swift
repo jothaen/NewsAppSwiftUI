@@ -11,4 +11,5 @@ import Foundation
 class Constants {
     static let GENERIC_ERROR_MESSAGE = "Something went wrong"
     static let LOADING_TEXT = "Loading..."
+    static let DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssX"
 }

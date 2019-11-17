@@ -13,7 +13,22 @@ struct NewsListElement : View {
     let article: ArticleModel
     
     var body: some View {
-         Text(article.title)
+        VStack(alignment: .leading) {
+            Text(article.title).font(.headline)
+            getAuthorText(author: article.author)
+            getFormattedDate(dateString: article.publishedAt)
+        }
+    }
+    
+    private func getFormattedDate(dateString: String?) -> Text? {
+        guard let dateString = dateString else { return nil }
+        let formattedDate = DateTimeFormatter.readableDate(dateString: dateString)
+        return Text(formattedDate).font(.footnote)
+    }
+    
+    private func getAuthorText(author: String?) -> Text? {
+        guard let author = author else { return nil }
+        return Text("author: \(author)").font(.subheadline)
     }
     
 }
