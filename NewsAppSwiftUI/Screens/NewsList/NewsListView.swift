@@ -15,8 +15,10 @@ struct NewsListView: View {
     
     var body: some View {
          NavigationView {
-            return getContent()
-        }.onAppear(perform: search)
+            getContent()
+            .navigationBarTitle(Constants.APP_NAME)
+        }
+         .onAppear(perform: search)
     }
     
     private func getContent() -> AnyView {

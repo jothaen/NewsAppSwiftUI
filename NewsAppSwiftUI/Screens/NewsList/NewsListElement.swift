@@ -13,10 +13,13 @@ struct NewsListElement : View {
     let article: ArticleModel
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(article.title).font(.headline)
-            getAuthorText(author: article.author)
-            getFormattedDate(dateString: article.publishedAt)
+        HStack(alignment: .top) {
+            getImageView(url: article.urlToImage)
+            VStack(alignment: .leading) {
+                Text(article.title).font(.headline)
+                getAuthorText(author: article.author)
+                getFormattedDate(dateString: article.publishedAt)
+            }
         }
     }
     
@@ -29,6 +32,12 @@ struct NewsListElement : View {
     private func getAuthorText(author: String?) -> Text? {
         guard let author = author else { return nil }
         return Text("author: \(author)").font(.subheadline)
+    }
+    
+    private func getImageView(url: String?) -> NetworkImageView? {
+        guard let urlString = url else { return nil }
+        guard let url = URL(string: urlString) else { return nil }
+        return NetworkImageView(url: url, height: 100, width: 100)
     }
     
 }

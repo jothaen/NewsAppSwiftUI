@@ -21,6 +21,7 @@
 		DAFD6C6B2381CF8E001F1F49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD6C6A2381CF8E001F1F49 /* Constants.swift */; };
 		DAFD6C6D2381D079001F1F49 /* NewsListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD6C6C2381D079001F1F49 /* NewsListElement.swift */; };
 		DAFD6C6F2381D3FC001F1F49 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD6C6E2381D3FC001F1F49 /* DateFormatter.swift */; };
+		DAFD6C742381DAB9001F1F49 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD6C732381DAB9001F1F49 /* NetworkImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		DAFD6C6A2381CF8E001F1F49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DAFD6C6C2381D079001F1F49 /* NewsListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListElement.swift; sourceTree = "<group>"; };
 		DAFD6C6E2381D3FC001F1F49 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		DAFD6C732381DAB9001F1F49 /* NetworkImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		DAEF58CE2381997A000F52FB /* NewsAppSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DAFD6C722381DAA8001F1F49 /* View */,
 				DAFD6C692381CF77001F1F49 /* Util */,
 				DAEF58EB2381A749000F52FB /* Screens */,
 				DAEF58E32381A109000F52FB /* Networking */,
@@ -137,6 +140,14 @@
 				DAFD6C6E2381D3FC001F1F49 /* DateFormatter.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		DAFD6C722381DAA8001F1F49 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DAFD6C732381DAB9001F1F49 /* NetworkImageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 			files = (
 				DAFD6C682381C107001F1F49 /* ResponseWrapper.swift in Sources */,
 				DAEF58D02381997A000F52FB /* AppDelegate.swift in Sources */,
+				DAFD6C742381DAB9001F1F49 /* NetworkImageView.swift in Sources */,
 				DAEF58EE2381A7BD000F52FB /* NewsListViewModel.swift in Sources */,
 				DAEF58E82381A19B000F52FB /* ArticleModel.swift in Sources */,
 				DAEF58D22381997A000F52FB /* SceneDelegate.swift in Sources */,
