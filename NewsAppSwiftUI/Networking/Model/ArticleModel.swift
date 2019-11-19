@@ -39,6 +39,19 @@ struct ArticleModel : Codable, Hashable {
         self.content = content
     }
     
+    func getImageUrl() -> URL? {
+        return getUrlFromString(urlString: urlToImage)
+    }
+    
+    func getArticleUrl() -> URL? {
+        return getUrlFromString(urlString: url)
+    }
+    
+    private func getUrlFromString(urlString: String?) -> URL? {
+    guard let urlString = urlString else { return nil }
+        return URL(string: urlString)
+    }
+    
     static func mock() -> ArticleModel {
         return ArticleModel(author: "John Doe", title: "Title", description: "Description", url: "www.google.pl", urlToImage: "www.google.pl", publishedAt: "17-11-2019", content: "Content")
     }
